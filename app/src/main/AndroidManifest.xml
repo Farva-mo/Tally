@@ -21,6 +21,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".GroupsHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewGroupActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".GroupBalancesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddExpenseActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SettleUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmJoinTripActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinedEmptyStateActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

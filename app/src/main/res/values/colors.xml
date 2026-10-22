@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Tally design tokens (from Figma wireframe) -->
+    <color name="tally_primary">#2F6F5F</color>
+    <color name="tally_primary_light">#E7F0EC</color>
+    <color name="tally_text_primary">#18181B</color>
+    <color name="tally_text_secondary">#71717A</color>
+    <color name="tally_text_tertiary">#A1A1AA</color>
+    <color name="tally_border">#E4E4E7</color>
+    <color name="tally_input_bg">#F4F4F5</color>
+    <color name="tally_negative">#9B4B3F</color>
+    <color name="tally_snackbar_bg">#18181B</color>
+    <color name="tally_snackbar_accent">#8FD3BF</color>
+    <color name="tally_surface">#FFFFFF</color>
 </resources>

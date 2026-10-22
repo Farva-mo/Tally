@@ -1,3 +1,170 @@
 <resources>
     <string name="app_name">Tally</string>
+
+    <!-- Shared nav -->
+    <string name="nav_groups">Groups</string>
+    <string name="nav_activity">Activity</string>
+    <string name="nav_profile">Profile</string>
+    <string name="tab_balances">Balances</string>
+    <string name="tab_expenses">Expenses</string>
+    <string name="tab_settle_up">Settle up</string>
+    <string name="action_coming_soon">Coming soon</string>
+
+    <!-- 01 Sign in -->
+    <string name="sign_in_logo">Tally</string>
+    <string name="sign_in_tagline">One shared record of what the group spent.</string>
+    <string name="label_email">Email</string>
+    <string name="hint_email">you@ucf.edu</string>
+    <string name="label_password">Password</string>
+    <string name="hint_password">••••••••</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="sign_in_new_here">New here?</string>
+    <string name="sign_in_create_account_link">Create an account</string>
+    <string name="sign_in_persistence_note">Session persists across launches — users land straight on their groups next time.</string>
+
+    <!-- 02 Create account -->
+    <string name="back">← Back</string>
+    <string name="create_account_title">Create account</string>
+    <string name="create_account_subtitle">Your display name is what other group members see.</string>
+    <string name="label_display_name">Display name</string>
+    <string name="hint_display_name">Acsah L.</string>
+    <string name="hint_password_new">At least 8 characters</string>
+    <string name="label_confirm_password">Confirm password</string>
+    <string name="validation_password_mismatch">! Passwords do not match</string>
+    <string name="action_create_account">Create account</string>
+
+    <!-- 03 Groups home -->
+    <string name="groups_home_title">Your groups</string>
+    <string name="owed_to_you">Owed to you</string>
+    <string name="you_owe">You owe</string>
+    <string name="action_new_group_join">+  New group · Join with code</string>
+    <string name="group_members_expenses_fmt">%1$d members · %2$d expenses</string>
+    <string name="group_settled_fmt">%1$d members · settled up</string>
+
+    <!-- 04 New group / Join with code -->
+    <string name="back_groups">← Groups</string>
+    <string name="add_group_title">Add a group</string>
+    <string name="segment_create_new">Create new</string>
+    <string name="segment_join_with_code">Join with code</string>
+    <string name="label_group_name">Group name</string>
+    <string name="hint_group_name">Cocoa Beach trip</string>
+    <string name="new_group_member_note">2–15 members. You can add people any time with the join code.</string>
+    <string name="action_create_group">Create group</string>
+    <string name="share_join_code_label">Share this join code</string>
+    <string name="sample_join_code">4K9 · TQ2</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_share">Share</string>
+    <string name="join_instead_note">Joining instead: enter a 6-character code and you are added to that group\'s roster.</string>
+    <string name="label_join_code">Join code</string>
+    <string name="hint_join_code">4K9 · TQ2</string>
+    <string name="action_join_group">Join group</string>
+
+    <!-- 05 Group · Balances -->
+    <string name="group_name_cocoa_beach">Cocoa Beach trip</string>
+    <string name="members_count_fmt">%1$d members</string>
+    <string name="net_balance_label">Your net balance in this group</string>
+    <string name="net_balance_detail_fmt">Paid $%1$s · your share $%2$s</string>
+    <string name="everyone_label">Everyone</string>
+    <string name="owes_fmt">owes $%1$s</string>
+    <string name="is_owed_fmt">is owed $%1$s</string>
+    <string name="settled">settled</string>
+    <string name="action_settle_up_arrow">Settle up  →</string>
+
+    <!-- 06 Add expense -->
+    <string name="action_cancel">Cancel</string>
+    <string name="new_expense_title">New expense</string>
+    <string name="action_save">Save</string>
+    <string name="label_amount">Amount</string>
+    <string name="label_description">Description</string>
+    <string name="hint_expense_description">Groceries — Publix run</string>
+    <string name="label_category">Category</string>
+    <string name="category_food">Food</string>
+    <string name="category_lodging">Lodging</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_utilities">Utilities</string>
+    <string name="category_other">Other</string>
+    <string name="label_paid_by">Paid by</string>
+    <string name="value_paid_by_you">You  ▾</string>
+    <string name="label_split_between">Split between</string>
+    <string name="split_equally">Equally</string>
+    <string name="split_exact">Exact amounts</string>
+    <string name="split_percent">Percent</string>
+    <string name="split_warning_fmt">!  Shares total $%1$s — $%2$s left to assign</string>
+    <string name="action_save_expense">Save expense</string>
+    <string name="sample_expense_amount">$128.40</string>
+    <string name="sample_split_warning">!  Shares total $124.40 — $4.00 left to assign</string>
+    <string name="split_member_you">You</string>
+    <string name="split_member_ethan">Ethan B.</string>
+    <string name="split_member_mohammad">Mohammad A.</string>
+    <string name="split_member_jordan">Jordan R.</string>
+    <string name="split_member_priya">Priya S.</string>
+    <string name="split_amount_32_10">$32.10</string>
+    <string name="split_amount_zero">$0.00</string>
+    <string name="split_amount_28_10">$28.10</string>
+
+    <!-- 07 Settle up -->
+    <string name="settle_up_title">Settle up</string>
+    <string name="action_history">History</string>
+    <string name="settle_headline_fmt">%1$d payments clear everything</string>
+    <string name="settle_headline">3 payments clear everything</string>
+    <string name="settle_subtitle">Seven open debts between five people, reduced to the fewest transfers. Nobody pays through a middleman.</string>
+    <string name="payments_to_make">Payments to make</string>
+    <string name="payment_route_fmt">%1$s  →  %2$s</string>
+    <string name="payment_route_1">Ethan B.  →  You</string>
+    <string name="payment_route_2">Mohammad A.  →  You</string>
+    <string name="payment_route_3">You  →  Jordan R.</string>
+    <string name="payment_amount_38">$38.00</string>
+    <string name="payment_amount_24_50">$24.50</string>
+    <string name="payment_amount_12">$12.00</string>
+    <string name="payment_note">one payment, clears both sides</string>
+    <string name="action_mark_settled">Mark settled</string>
+    <string name="marked_settled_toast">Marked as settled</string>
+    <string name="settle_disclaimer">Tally tracks who owes what — it does not move money. Send the transfer however your group already does, then mark it settled here.</string>
+
+    <!-- 08 Expense history -->
+    <string name="filter_all_members">All members ▾</string>
+    <string name="filter_food">Food ▾</string>
+    <string name="action_clear">Clear</string>
+    <string name="section_this_week">THIS WEEK</string>
+    <string name="section_last_week">LAST WEEK</string>
+    <string name="snackbar_expense_added">Expense added</string>
+    <string name="action_undo">UNDO</string>
+
+    <!-- 09 Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_name">Acsah L.</string>
+    <string name="profile_email_edit_fmt">%1$s  ·  Edit display name</string>
+    <string name="profile_groups_note_fmt">Across all %1$d groups</string>
+    <string name="setting_push_notifications">Push notifications</string>
+    <string name="setting_on">On</string>
+    <string name="setting_theme">Theme</string>
+    <string name="setting_theme_system">System</string>
+    <string name="setting_change_password">Change password</string>
+    <string name="setting_groups_in">Groups you are in</string>
+    <string name="leave_group_note">Leaving a group is blocked while you still hold an unsettled balance in it.</string>
+    <string name="action_sign_out">Sign out</string>
+
+    <!-- 11 Confirm & join trip -->
+    <string name="join_group_title">Join group</string>
+    <string name="code_matched_fmt">Code %1$s matched</string>
+    <string name="created_by_fmt">Created by %1$s · %2$s</string>
+    <string name="members_already_in_fmt">%1$d members already in</string>
+    <string name="sample_created_by">Created by Ethan B. · Sep 4, 2026</string>
+    <string name="sample_members_already_in">4 members already in</string>
+    <string name="stat_expenses_logged">expenses logged</string>
+    <string name="stat_spent_so_far">spent so far</string>
+    <string name="stat_open_payments">open payments</string>
+    <string name="join_bullet_1">You will see every past expense in this group, including ones logged before you joined.</string>
+    <string name="join_bullet_2">Nothing is charged to you automatically — you only owe a share of expenses a member marks you on.</string>
+    <string name="join_bullet_3">You can leave any time, as long as your balance is settled.</string>
+    <string name="action_join_this_group">Join this group</string>
+    <string name="action_not_now">Not now</string>
+    <string name="wrong_group_note">Wrong group? Go back and re-enter the code.</string>
+
+    <!-- 12 Joined · no expenses yet -->
+    <string name="joined_banner_fmt">You joined %1$s</string>
+    <string name="empty_state_title">Nothing to settle yet</string>
+    <string name="empty_state_body">Balances appear once someone logs an expense. Whoever pays first enters it — Tally works out the rest.</string>
+    <string name="action_add_first_expense">+  Add the first expense</string>
+    <string name="action_invite_more_members_fmt">Invite more members · %1$s</string>
 </resources>
