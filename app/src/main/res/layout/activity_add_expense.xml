@@ -62,39 +62,40 @@
             android:padding="20dp">
 
             <!-- Amount -->
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/label_amount"
-                android:textColor="@color/tally_text_secondary"
-                android:textSize="12sp" />
+                android:hint="@string/label_amount"
+                app:boxBackgroundMode="none"
+                app:prefixText="@string/currency_prefix">
 
-            <TextView
-                android:id="@+id/text_amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="@string/sample_expense_amount"
-                android:textColor="@color/tally_text_primary"
-                android:textSize="44sp"
-                android:textStyle="bold" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/tally_text_primary"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Description -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_description"
                 style="@style/Widget.Tally.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:hint="@string/label_description">
+                android:hint="@string/label_description"
+                app:placeholderText="@string/hint_expense_description">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapSentences"
-                    android:text="@string/hint_expense_description"
                     android:textColor="@color/tally_text_primary"
                     android:textSize="13sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -425,9 +426,10 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_icon_box"
                 android:padding="12dp"
-                android:text="@string/sample_split_warning"
                 android:textColor="@color/tally_negative"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:text="@string/sample_split_warning" />
 
         </LinearLayout>
     </ScrollView>

@@ -31,6 +31,9 @@ public class NewGroupActivity extends AppCompatActivity {
     private static final String CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     private static final int CODE_LENGTH = 6;
 
+    private static final String KEY_JOIN_CODE = "join_code";
+    private static final String KEY_JOIN_MODE_SELECTED = "join_mode_selected";
+
     private final SecureRandom random = new SecureRandom();
     private String joinCode;
 
@@ -75,6 +78,20 @@ public class NewGroupActivity extends AppCompatActivity {
             panelJoin.setVisibility(creating ? View.GONE : View.VISIBLE);
         });
 
+        // Restore the generated join code and the selected tab across rotation -- both are
+        // runtime-only state (view visibility, a plain TextView's text) that Android does not
+        // restore on its own.
+        if (savedInstanceState != null) {
+            joinCode = savedInstanceState.getString(KEY_JOIN_CODE);
+            if (joinCode != null) {
+                textJoinCode.setText(formatJoinCode(joinCode));
+                cardJoinCode.setVisibility(View.VISIBLE);
+            }
+            if (savedInstanceState.getBoolean(KEY_JOIN_MODE_SELECTED, false)) {
+                toggle.check(R.id.segment_join);
+            }
+        }
+
         findViewById(R.id.button_create_group).setOnClickListener(v -> {
             String name = String.valueOf(inputGroupName.getText()).trim();
             if (name.isEmpty()) {
@@ -112,6 +129,14 @@ public class NewGroupActivity extends AppCompatActivity {
             confirm.putExtra(ConfirmJoinTripActivity.EXTRA_JOIN_CODE, code);
             startActivity(confirm);
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_JOIN_CODE, joinCode);
+        outState.putBoolean(KEY_JOIN_MODE_SELECTED,
+                findViewById(R.id.panel_join).getVisibility() == View.VISIBLE);
     }
 
     private String generateJoinCode() {

@@ -3,8 +3,10 @@ package com.example.tally;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,10 @@ import com.google.android.material.textfield.TextInputLayout;
 public class CreateAccountActivity extends AppCompatActivity {
 
     private static final int MIN_PASSWORD_LENGTH = 8;
+
+    private static final String KEY_PASSWORD_ERROR = "password_error";
+    private static final String KEY_DISPLAY_NAME_ERROR = "display_name_error";
+    private static final String KEY_EMAIL_ERROR = "email_error";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,18 @@ public class CreateAccountActivity extends AppCompatActivity {
         TextInputEditText password = findViewById(R.id.input_password);
         TextInputEditText confirm = findViewById(R.id.input_confirm_password);
         TextView error = findViewById(R.id.text_password_error);
+
+        // Restore validation messages across rotation -- TextInputLayout.setError() and a plain
+        // TextView's visibility are both runtime-only state that Android does not restore itself.
+        if (savedInstanceState != null) {
+            String passwordError = savedInstanceState.getString(KEY_PASSWORD_ERROR);
+            if (passwordError != null) {
+                error.setText(passwordError);
+                error.setVisibility(View.VISIBLE);
+            }
+            layoutDisplayName.setError(savedInstanceState.getString(KEY_DISPLAY_NAME_ERROR));
+            layoutEmail.setError(savedInstanceState.getString(KEY_EMAIL_ERROR));
+        }
 
         findViewById(R.id.link_back).setOnClickListener(v -> finish());
 
@@ -62,6 +80,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                 layoutEmail.setError(getString(R.string.error_email_required));
                 return;
             }
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailValue).matches()) {
+                layoutEmail.setError(getString(R.string.error_email_invalid));
+                return;
+            }
             if (first.length() < MIN_PASSWORD_LENGTH) {
                 error.setText(R.string.error_password_too_short);
                 error.setVisibility(View.VISIBLE);
@@ -78,10 +100,28 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
 
             AuthStore.createAccount(this, emailValue, first, name);
+            Toast.makeText(this, R.string.account_created_toast, Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, GroupsHomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        TextView error = findViewById(R.id.text_password_error);
+        if (error.getVisibility() == View.VISIBLE) {
+            outState.putString(KEY_PASSWORD_ERROR, error.getText().toString());
+        }
+        TextInputLayout layoutDisplayName = findViewById(R.id.layout_display_name);
+        TextInputLayout layoutEmail = findViewById(R.id.layout_email);
+        if (layoutDisplayName.getError() != null) {
+            outState.putString(KEY_DISPLAY_NAME_ERROR, layoutDisplayName.getError().toString());
+        }
+        if (layoutEmail.getError() != null) {
+            outState.putString(KEY_EMAIL_ERROR, layoutEmail.getError().toString());
+        }
     }
 }
