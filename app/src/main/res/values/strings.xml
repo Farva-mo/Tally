@@ -198,6 +198,7 @@
     <string name="action_mark_settled">Mark settled</string>
     <string name="marked_settled_toast">Marked as settled</string>
     <string name="settle_disclaimer">Tally tracks who owes what — it does not move money. Send the transfer however your group already does, then mark it settled here.</string>
+    <string name="about_settling_up_label">About settling up</string>
 
     <!-- 08 Expense history -->
     <string name="filter_all_members">All members ▾</string>
@@ -221,6 +222,20 @@
     <string name="setting_groups_in">Groups you are in</string>
     <string name="leave_group_note">Leaving a group is blocked while you still hold an unsettled balance in it.</string>
     <string name="action_sign_out">Sign out</string>
+
+    <!-- 10 Landscape · Balances + settle plan -->
+    <string name="balances_title">Balances</string>
+    <string name="landscape_back_cocoa_beach">←  Cocoa Beach trip</string>
+    <string name="action_add_expense_label">+  Add expense</string>
+    <string name="nav_icon_placeholder">▭</string>
+    <string name="net_label">net</string>
+    <string name="balance_signed_you">+$62.50</string>
+    <string name="balance_signed_ethan">−$38.00</string>
+    <string name="balance_signed_mohammad">−$24.50</string>
+    <string name="balance_signed_jordan">+$12.00</string>
+    <string name="settlement_plan_label">Settlement plan</string>
+    <string name="settlement_plan_subtitle">3 payments clear all balances</string>
+    <string name="action_mark_all_settled">Mark all settled</string>
 
     <!-- 11 Confirm & join trip -->
     <string name="join_group_title">Join group</string>

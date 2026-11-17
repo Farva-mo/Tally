@@ -13,6 +13,12 @@ final class GroupNav {
     }
 
     static void bind(Activity activity) {
+        bindBackAndRail(activity);
+        bindTabs(activity);
+    }
+
+    /** Back button and the groups/home/profile rail — present on every group page layout. */
+    static void bindBackAndRail(Activity activity) {
         activity.findViewById(R.id.button_back).setOnClickListener(v ->
                 openTop(activity, GroupsHomeActivity.class));
         activity.findViewById(R.id.nav_home).setOnClickListener(v ->
@@ -22,7 +28,10 @@ final class GroupNav {
 
         activity.findViewById(R.id.nav_profile).setOnClickListener(v ->
                 openTop(activity, ProfileSettingsActivity.class));
+    }
 
+    /** Balances/Expenses/Settle up tabs — only present on the tabbed portrait layouts. */
+    static void bindTabs(Activity activity) {
         activity.findViewById(R.id.tab_balances).setOnClickListener(v ->
                 openTop(activity, GroupBalancesActivity.class));
         activity.findViewById(R.id.tab_expenses).setOnClickListener(v ->

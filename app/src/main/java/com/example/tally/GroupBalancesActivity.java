@@ -2,6 +2,7 @@ package com.example.tally;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class GroupBalancesActivity extends AppCompatActivity {
             return insets;
         });
 
-        GroupNav.bind(this);
+        GroupNav.bindBackAndRail(this);
 
         if (getIntent().getBooleanExtra(EXTRA_JUST_JOINED, false)) {
             String message = getString(R.string.joined_banner_fmt,
@@ -37,8 +38,18 @@ public class GroupBalancesActivity extends AppCompatActivity {
             Snackbar.make(findViewById(R.id.main), message, Snackbar.LENGTH_LONG).show();
         }
 
-        findViewById(R.id.button_settle_up).setOnClickListener(v ->
-                GroupNav.openTop(this, SettleUpActivity.class));
+        // The landscape layout merges Balances + Settle up into one screen, so it has
+        // neither the portrait tabs nor a dedicated "Settle up" button.
+        View tabBalances = findViewById(R.id.tab_balances);
+        if (tabBalances != null) {
+            GroupNav.bindTabs(this);
+        }
+
+        View settleUpButton = findViewById(R.id.button_settle_up);
+        if (settleUpButton != null) {
+            settleUpButton.setOnClickListener(v -> GroupNav.openTop(this, SettleUpActivity.class));
+        }
+
         findViewById(R.id.button_add_expense).setOnClickListener(v ->
                 startActivity(new Intent(this, AddExpenseActivity.class)));
     }
