@@ -30,6 +30,15 @@ public class ConfirmJoinTripActivity extends AppCompatActivity {
         });
 
         String code = getIntent().getStringExtra(EXTRA_JOIN_CODE);
+        Group group = GroupStore.findByJoinCode(this, code);
+        if (group == null) {
+            finish();
+            return;
+        }
+        TextView groupName = findViewById(R.id.text_confirm_group_name);
+        if (groupName != null) {
+            groupName.setText(group.name);
+        }
         if (code != null && code.length() == 6) {
             String formatted = code.substring(0, 3) + " · " + code.substring(3);
             ((TextView) findViewById(R.id.text_code_matched))
@@ -42,6 +51,7 @@ public class ConfirmJoinTripActivity extends AppCompatActivity {
         findViewById(R.id.button_join_this_group).setOnClickListener(v -> {
             Intent intent = new Intent(this, GroupBalancesActivity.class);
             intent.putExtra(GroupBalancesActivity.EXTRA_JUST_JOINED, true);
+            intent.putExtra(Extras.GROUP_ID, group.id);
             startActivity(intent);
             finish();
         });

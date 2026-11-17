@@ -24,6 +24,26 @@ public class GroupBalancesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_group_balances);
+        String extraGroupId = getIntent().getStringExtra(Extras.GROUP_ID);
+        final String groupId = extraGroupId != null ? extraGroupId : "cocoa-beach";
+        Group group = GroupStore.get(this, groupId);
+        if (group != null) {
+            android.widget.TextView title = findViewById(R.id.text_group_title);
+            if (title != null) title.setText(group.name);
+        }
+        java.util.List<Expense> expenses = ExpenseStore.listForGroup(this, groupId);
+        java.util.Map<String, Long> balances = BalanceCalculator.balances(expenses);
+        long youBalance = balances.containsKey("You") ? balances.get("You") : 0L;
+        android.widget.TextView net = findViewById(R.id.text_net_balance);
+        android.widget.TextView detail = findViewById(R.id.text_net_detail);
+        if (net != null) net.setText(formatMoney(youBalance));
+        if (detail != null) {
+            detail.setText(youBalance >= 0 ? "People owe you" : "You owe people");
+        }
+        bindMemberBalance(R.id.text_balance_ethan, balances, "Ethan");
+        bindMemberBalance(R.id.text_balance_mohammad, balances, "Mohammad");
+        bindMemberBalance(R.id.text_balance_jordan, balances, "Jordan");
+        bindMemberBalance(R.id.text_balance_priya, balances, "Priya");
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -47,10 +67,34 @@ public class GroupBalancesActivity extends AppCompatActivity {
 
         View settleUpButton = findViewById(R.id.button_settle_up);
         if (settleUpButton != null) {
-            settleUpButton.setOnClickListener(v -> GroupNav.openTop(this, SettleUpActivity.class));
+            settleUpButton.setOnClickListener(v -> {
+                Intent intent = new Intent(this, SettleUpActivity.class);
+                intent.putExtra(Extras.GROUP_ID, groupId);
+                startActivity(intent);
+            });
         }
 
-        findViewById(R.id.button_add_expense).setOnClickListener(v ->
-                startActivity(new Intent(this, AddExpenseActivity.class)));
+        findViewById(R.id.button_add_expense).setOnClickListener(v -> {
+            Intent intent = new Intent(this, AddExpenseActivity.class);
+            intent.putExtra(Extras.GROUP_ID, groupId);
+            startActivity(intent);
+        });
+    }
+
+    private void bindMemberBalance(int viewId, java.util.Map<String, Long> balances, String member) {
+        android.widget.TextView view = findViewById(viewId);
+        if (view != null) {
+            view.setText(formatMoney(balances.containsKey(member) ? balances.get(member) : 0L));
+            view.setTextColor(view.getContext().getColor(
+                    balances.containsKey(member) && balances.get(member) >= 0
+                            ? R.color.tally_primary : R.color.tally_negative));
+        }
+    }
+
+    private String formatMoney(long cents) {
+        java.util.Locale locale = java.util.Locale.US;
+        return String.format(locale, "%s$%.2f",
+                cents >= 0 ? "+" : "-",
+                Math.abs(cents) / 100.0);
     }
 }

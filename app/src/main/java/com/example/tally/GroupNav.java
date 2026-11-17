@@ -46,6 +46,10 @@ final class GroupNav {
             return;
         }
         Intent intent = new Intent(from, target);
+        String groupId = from.getIntent().getStringExtra(Extras.GROUP_ID);
+        if (groupId != null) {
+            intent.putExtra(Extras.GROUP_ID, groupId);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         from.startActivity(intent);
     }

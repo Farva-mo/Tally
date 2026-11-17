@@ -154,6 +154,7 @@
 
             <!-- Payment 1 -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_payment_1"
                 style="@style/Widget.Tally.Card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -172,6 +173,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/text_payment_route_1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -181,6 +183,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/text_payment_amount_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/payment_amount_38"
@@ -209,6 +212,7 @@
 
             <!-- Payment 2 -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_payment_2"
                 style="@style/Widget.Tally.Card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -227,6 +231,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/text_payment_route_2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -236,6 +241,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/text_payment_amount_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/payment_amount_24_50"
@@ -264,6 +270,7 @@
 
             <!-- Payment 3 -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_payment_3"
                 style="@style/Widget.Tally.Card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -286,6 +293,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/payment_route_3"
+                            android:id="@+id/text_payment_route_3"
                             android:textColor="@color/tally_text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -294,6 +302,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/payment_amount_12"
+                            android:id="@+id/text_payment_amount_3"
                             android:textColor="@color/tally_primary"
                             android:textSize="18sp"
                             android:textStyle="bold" />

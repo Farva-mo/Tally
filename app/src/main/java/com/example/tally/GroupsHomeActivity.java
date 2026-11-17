@@ -2,6 +2,12 @@ package com.example.tally;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.LinearLayout;
+
+import com.google.android.material.card.MaterialCardView;
+
+import java.util.List;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,11 +35,14 @@ public class GroupsHomeActivity extends AppCompatActivity {
         findViewById(R.id.nav_profile).setOnClickListener(v ->
                 GroupNav.openTop(this, ProfileSettingsActivity.class));
 
-        // Only Cocoa Beach has fake data, so every group card opens the same balances page.
+        List<Group> groups = GroupStore.list(this);
         int[] groupCards = {R.id.card_group_1, R.id.card_group_2, R.id.card_group_3};
-        for (int id : groupCards) {
-            findViewById(id).setOnClickListener(v ->
-                    startActivity(new Intent(this, GroupBalancesActivity.class)));
+        for (int i = 0; i < groupCards.length && i < groups.size(); i++) {
+            Group group = groups.get(i);
+            MaterialCardView card = findViewById(groupCards[i]);
+            ((TextView) card.findViewById(R.id.text_group_name_placeholder))
+                    .setText(group.name);
+            card.setOnClickListener(v -> openGroup(group.id));
         }
 
         findViewById(R.id.button_new_group).setOnClickListener(v ->
@@ -43,6 +52,12 @@ public class GroupsHomeActivity extends AppCompatActivity {
     private void openHome() {
         Intent intent = new Intent(this, GroupsHomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+    }
+
+    private void openGroup(String groupId) {
+        Intent intent = new Intent(this, GroupBalancesActivity.class);
+        intent.putExtra(Extras.GROUP_ID, groupId);
         startActivity(intent);
     }
 }

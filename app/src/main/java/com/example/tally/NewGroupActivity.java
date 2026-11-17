@@ -22,8 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.security.SecureRandom;
 
 /**
- * 04 - Add a group. "Create new" generates a random 6-character join code; "Join with code"
- * takes one. No backend yet, so nothing is saved.
+ * 04 - Add a group. Creates and joins persisted local groups.
  */
 public class NewGroupActivity extends AppCompatActivity {
 
@@ -101,8 +100,11 @@ public class NewGroupActivity extends AppCompatActivity {
             layoutGroupName.setError(null);
 
             joinCode = generateJoinCode();
+            Group group = GroupStore.create(this, name);
+            joinCode = group.joinCode;
             textJoinCode.setText(formatJoinCode(joinCode));
             cardJoinCode.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Group saved", Toast.LENGTH_SHORT).show();
         });
 
         findViewById(R.id.button_copy_code).setOnClickListener(v -> {
@@ -125,8 +127,13 @@ public class NewGroupActivity extends AppCompatActivity {
                 return;
             }
             layoutJoinCode.setError(null);
+            String normalizedCode = code.trim().toUpperCase();
+            if (GroupStore.findByJoinCode(this, normalizedCode) == null) {
+                layoutJoinCode.setError(getString(R.string.error_join_code_invalid));
+                return;
+            }
             Intent confirm = new Intent(this, ConfirmJoinTripActivity.class);
-            confirm.putExtra(ConfirmJoinTripActivity.EXTRA_JOIN_CODE, code);
+            confirm.putExtra(ConfirmJoinTripActivity.EXTRA_JOIN_CODE, normalizedCode);
             startActivity(confirm);
         });
     }

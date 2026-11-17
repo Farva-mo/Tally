@@ -10,4 +10,5 @@ public final class Extras {
 
     public static final String GROUP_NAME = "extra_group_name";
     public static final String JOIN_CODE = "extra_join_code";
+    public static final String GROUP_ID = "extra_group_id";
 }

@@ -30,6 +30,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/text_group_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -113,6 +114,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/text_net_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -197,6 +199,7 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/text_net_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/net_balance_label"
@@ -204,6 +207,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_balance_ethan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -213,6 +217,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/text_balance_mohammad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -223,6 +228,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/text_balance_jordan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -258,6 +264,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/text_balance_priya"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sample_owes_ethan"

@@ -108,6 +108,19 @@ public class AddExpenseActivity extends AppCompatActivity {
                 return;
             }
 
+            String groupId = getIntent().getStringExtra(Extras.GROUP_ID);
+            if (groupId == null) {
+                groupId = "cocoa-beach";
+            }
+            java.util.ArrayList<String> members = new java.util.ArrayList<>();
+            if (splitMembers[0].isChecked()) members.add("You");
+            if (splitMembers[1].isChecked()) members.add("Ethan");
+            if (splitMembers[2].isChecked()) members.add("Mohammad");
+            if (splitMembers[3].isChecked()) members.add("Jordan");
+            if (splitMembers[4].isChecked()) members.add("Priya");
+            Expense expense = Expense.create(groupId, description, amount, "You", members, "Other");
+            ExpenseStore.save(this, expense);
+
             Toast.makeText(this, R.string.snackbar_expense_added, Toast.LENGTH_SHORT).show();
             finish();
         });
