@@ -60,6 +60,7 @@
                     android:textSize="12sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_display_name"
                     style="@style/Widget.Tally.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -76,6 +77,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_email"
                     style="@style/Widget.Tally.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
